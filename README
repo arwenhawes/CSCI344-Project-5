@@ -3,7 +3,11 @@ Project 5
 make the todo app save todo's to a mongoDB
 1. set up node-dev-bootstrap
 2. created package.json with dependencies
-3. 
+3. created controller, model & public folders
+4. moved index, img, tabs and javascript folders to public directory
+5. created controller file based on github repo cs-at-unca / csci344-express-app-with-post renaming it for todo
+6. created model file based on above github repo
+7. 
 
 This is a Vagrant file and set of Chef recipes for building a basic node development environment.
 If you're not familiar with Vagrant, read more about it at http://www.vagrantup.com.
