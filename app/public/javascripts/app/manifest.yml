@@ -1,0 +1,9 @@
+--- 
+applications: 
+- instances: 1
+  memory: 64M
+  name: todoapp
+  framework: node
+  url: todoapp.${target-base}
+  runtime: node08
+  path: .

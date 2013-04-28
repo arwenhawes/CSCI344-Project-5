@@ -1,0 +1,51 @@
+.tabs {
+  margin-top: 50px;
+  margin-bottom:20px;
+}
+
+.tabs .tab {
+  background: #ccc;
+  padding: 5px;
+}
+
+.tabs .active {
+  background: white;
+  border: 1px solid black;
+  border-bottom-width: 0;
+}
+
+.content .tab {
+  display: none;
+}
+
+.content .active {
+  display: block;
+}
+
+body {
+  width: 960px;
+  margin: 0 auto;
+}
+
+h2, p, li {
+  text-transform: capitalize;
+}
+
+span { 
+  color: #cc0000;
+}
+
+li:hover {
+  list-style-image: url('../../img/remove.png');
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+h2 {
+  background-color: #ccc;
+  padding-left: 10px;
+  padding-top: 4px;
+}

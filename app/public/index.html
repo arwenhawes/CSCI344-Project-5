@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+  
+  <body>
+    <h2>To-do List Application</h2>
+    <div class="tabs">
+      <a class="tab active" href="tab1">All</a>
+      <a class="tab" href="tab2">Categories</a>
+      <a class="tab" href="tab3">Edit</a>
+    </div>
+    
+    <div class="content">
+      <div class="tab active" id="tab1">&nbsp;</div>
+      <div class="tab" id="tab2">&nbsp;</div>
+      <div class="tab" id="tab3">
+        <p>Todo Decsription: <input type="text" id="desc"></input></p>
+        <p>Categories: <input type="text" id="cats"></input></p>
+        <p><a href="#" id="submit">Add Todo's</a></p>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="javascripts/app/app.js"></script>
+  </body>
+</html>
