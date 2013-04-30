@@ -7,7 +7,8 @@ make the todo app save todo's to a mongoDB
 4. moved index, img, tabs and javascript folders to public directory
 5. created controller file based on github repo cs-at-unca / csci344-express-app-with-post renaming it for todo
 6. created model file based on above github repo
-7. 
+7. changed the app file in public to have the todo and category commit to the db
+
 
 This is a Vagrant file and set of Chef recipes for building a basic node development environment.
 If you're not familiar with Vagrant, read more about it at http://www.vagrantup.com.

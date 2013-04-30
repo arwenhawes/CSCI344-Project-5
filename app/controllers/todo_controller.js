@@ -17,7 +17,7 @@ toDoController.create = function (req, res) {
 	"categories":req.body.categories
     });
 
-    p.save(function (err, result) {
+    t.save(function (err, result) {
 	if (err !== null) {
 	    //send the error
 	} else {

@@ -20,6 +20,6 @@ http.createServer(app).listen(3000, function () {
     console.log("Server running on port 3000");
 });
 
-app.get("/todo.json", pc.list);
-app.post("/todo/new", pc.create);
+app.get("/all.json", pc.list); //gets the todos from the all.json file
+app.post("/todo/new", pc.create); //posts new todo to the mongoDB
 //app.post("/todo/delete", pc.destroy);

@@ -88,6 +88,26 @@ var main = function () {
             }
         }
         
+        //add mongoDB code here to add stuff to db
+     //$("#new_person").click(function () {
+	    //  var name = $("#name").val(),
+	      //    age = $("#age").val(),
+	       var post_object = {};
+
+	      if (desc === "" || cats === "") {
+	        alert("Please have a todo and at least one category when creating a new todo");
+	        } else {
+	        post_object.desc = name;
+	        post_object.cats = age;
+	        console.log(post_object);
+
+	    $.post("/todo/new", post_object, function (response) {
+		      console.log(response);
+		      $("#desc").val("");
+		      $("#cats").val("");
+	        });
+	    }
+    });
         
         
         return false;
