@@ -1,40 +1,38 @@
 var main = function () {
-  use="strict";
-  
-  var setUpClickHandler = function (anchor) {
-      anchor.click(function () {
-      var target = $(this).attr("href");
-    
-      $(".active").removeClass("active");
-      $(this).addClass("active");
-      $("#"+target).addClass("active");
-    
-      return false;
-    });    
-  };
+        'use strict';
+        /*global console: false, window: false, alert: false */
+        var $ = window.$,
+            setUpJSONTab,
+            setUpJSONTabAll,
+            setUpClickHandler = function (anchor) {
+                anchor.click(function () {
+                    var target = $(this).attr("href");
+                    $(".active").removeClass("active");
+                    $(this).addClass("active");
+                    $("#" + target).addClass("active");
+                    return false;
+                });
+            };
 
-  var setUpJSONTab = function (tab) {
-      var tab_a = $("<a>"+tab.title+"</a>").addClass("tab").attr("href", tab.title);
-      $(".tabs").append(tab_a);
-    
-      var content = $("<div>"+tab.content+"</div>").addClass("tab").attr("id",tab.title);
-      $(".content").append(content);
-      setUpClickHandler(tab_a);    
-  }; 
+        setUpJSONTab = function (tab) {
+            var content,
+                tab_a = $("<a>" + tab.title + "</a>").addClass("tab").attr("href", tab.title);
+            $(".tabs").append(tab_a);
+            content = $("<div>" + tab.content + "</div>").addClass("tab").attr("id", tab.title);
+            $(".content").append(content);
+            setUpClickHandler(tab_a);
+        };
 
 
-  var setUpJSONTabAll = function (tab) {
-      $('#tab1').append('<ul>'); // begin ul
-      var counter = 0;
-      for(var i = 0; i < tab.length; i++) // iterate elements in all.json
-      {
-          var element = '<li><span>' + tab[i].desc + "</span>: "; // append each desc
-          
-              element += " " + tab[i].cats;
-      
-          element += '</li>';
-          $('#tab1 ul').append(element);
-          counter ++;
+        setUpJSONTabAll = function (tab) {
+            $('#tab1').append('<ul>'); // begin ul
+            var counter = 0;
+            for (var i = 0; i < tab.length; i++) { // iterate elements in all.json
+                var element = '<li><span>' + tab[i].desc + "</span>: "; // append each desc
+                element += " " + tab[i].cats;
+                element += '</li>';
+                $('#tab1 ul').append(element);
+                counter ++;
       }
       $('#tab1').append('</ul>');
   };
@@ -42,22 +40,22 @@ var main = function () {
   $.getJSON("/all.json", setUpJSONTabAll);
     
     var setUpJSONTabCats = function (todos) {
-        todos.forEach( function (todo) { // iterate each todo on the entire list
-            todo.categories.forEach(function (category) { // build div tab for each unique category
-                if($('#' + category).length === 0) { // if category div doesn't exist, append
-                    $('#tab2').append('<div id="' + category + '"><h2>' + category + '</h2><ul></ul></div>');
+        todos.forEach( function (todo) { // iterate each todo on the entire list  
+          todo.cats.forEach(function (category) { // build div tab for each unique category
+                if($('#' + todo.cats).length === 0) { // if category div doesn't exist, append
+                    $('#tab2').append('<div id="' + todo.cats + '"><h2>' + todo.cats + '</h2><ul></ul></div>');
                 }
             });
         });
       
         todos.forEach( function (todo) { // iterate each todo on the entire list
-            todo.categories.forEach(function (category) { 
-                $('#' + category + ' ul').append('<li>' + todo.description + '</li>');
+            todo.cats.forEach(function (category) { 
+                $('#' + todo.cats + ' ul').append('<li>' + todo.desc + '</li>');
             });
         });                    
-    }// end setUpJSONTabCats
+    };// end setUpJSONTabCats
   
-    $.getJSON("tabs/all.json", setUpJSONTabCats);
+    $.getJSON("/all.json", setUpJSONTabCats);
     setUpClickHandler($(".tabs .tab"));
  
     $(document).on('click', 'li', function() { // anytime an li is clicked, remove all matching 
@@ -88,8 +86,7 @@ var main = function () {
             }
         }
 
-	       var post_object = {};
-
+                var post_object = {};
 	      if (desc === "" || cats === "") {
 	        alert("Please have a todo and at least one category when creating a new todo");
 	        } else {
@@ -103,7 +100,6 @@ var main = function () {
 		      $("#cats").val("");
 	        });
 	    }
-         
         return false;
     });
   
