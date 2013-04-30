@@ -13,21 +13,22 @@ toDoController.list = function (req, res) {
 
 toDoController.create = function (req, res) {
     var t = new td({
-	"description":req.body.description,
-	"categories":req.body.categories
+	"desc":req.body.desc,
+	"cats":req.body.cats
     });
-
+  console.log(t);
     t.save(function (err, result) {
 	if (err !== null) {
 	    //send the error
 	} else {
 	    res.json(result);
+      console.log("else" + result);
 	}
     });
 };
 /*
 PersonController.destroy = function (req, res) {
-    Person.findOne({"description":req.body.description}, function (err, person) {
+    Person.findOne({"desc":req.body.desc}, function (err, person) {
 	if (err !== null) {
 	    //handle err
 	} else if (person === null) {

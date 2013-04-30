@@ -5,8 +5,8 @@ var mongoose = require("mongoose"),
 mongoose.connect("mongodb://localhost/development");
 
 toDoSchema = new mongoose.Schema({
-    "description": String,
-    "categories" : String
+    "desc": String,
+    "cats" : Array
 });
 
 toDo = mongoose.model("toDo", toDoSchema);
@@ -16,8 +16,8 @@ toDo.findOne({}, function (err, result) {
 	console.log(err);
     } else if (result === null) {
 	var t = new toDo({
-	    "description": "finish project 5",
-	    "categories": "CSCI344"
+	    "desc": "finish project 5",
+	    "cats": "CSCI344"
 	});
 
 	t.save(function (err) {
