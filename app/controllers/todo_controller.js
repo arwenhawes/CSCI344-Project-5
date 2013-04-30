@@ -25,9 +25,9 @@ toDoController.create = function (req, res) {
 	}
     });
 };
-
+/*
 PersonController.destroy = function (req, res) {
-    Person.findOne({"name":req.body.name}, function (err, person) {
+    Person.findOne({"description":req.body.description}, function (err, person) {
 	if (err !== null) {
 	    //handle err
 	} else if (person === null) {
@@ -41,5 +41,5 @@ PersonController.destroy = function (req, res) {
 	}
     });
 };
-
+*/
 module.exports = toDoController;

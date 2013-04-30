@@ -26,12 +26,12 @@ var main = function () {
   var setUpJSONTabAll = function (tab) {
       $('#tab1').append('<ul>'); // begin ul
       var counter = 0;
-      for(i in tab) // iterate elements in all.json
+      for(var i = 0; i < tab.length; i++) // iterate elements in all.json
       {
-          var element = '<li><span>' + tab[i].description + "</span>: "; // append each desc
-          tab[i].categories.forEach( function(cat) { // append each category seperately
-              element += " " + cat;
-          });
+          var element = '<li><span>' + tab[i].desc + "</span>: "; // append each desc
+          
+              element += " " + tab[i].cats;
+      
           element += '</li>';
           $('#tab1 ul').append(element);
           counter ++;
@@ -39,7 +39,7 @@ var main = function () {
       $('#tab1').append('</ul>');
   };
 
-  $.getJSON("tabs/all.json", setUpJSONTabAll);
+  $.getJSON("/all.json", setUpJSONTabAll);
     
     var setUpJSONTabCats = function (todos) {
         todos.forEach( function (todo) { // iterate each todo on the entire list
@@ -87,18 +87,14 @@ var main = function () {
                 $('#tab2').append('<div id="' + cats[i] + '"><h2>' + cats[i] + '</h2><ul><li>' + desc + '</li></ul></div>');                
             }
         }
-        
-        //add mongoDB code here to add stuff to db
-     //$("#new_person").click(function () {
-	    //  var name = $("#name").val(),
-	      //    age = $("#age").val(),
+
 	       var post_object = {};
 
 	      if (desc === "" || cats === "") {
 	        alert("Please have a todo and at least one category when creating a new todo");
 	        } else {
-	        post_object.desc = name;
-	        post_object.cats = age;
+	        post_object.desc = desc;
+	        post_object.cats = cats;
 	        console.log(post_object);
 
 	    $.post("/todo/new", post_object, function (response) {
@@ -107,9 +103,7 @@ var main = function () {
 		      $("#cats").val("");
 	        });
 	    }
-    });
-        
-        
+         
         return false;
     });
   
